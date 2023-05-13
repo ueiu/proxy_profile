@@ -20,5 +20,7 @@ custom_proxy_group=🛑 全球拦截`select`[]REJECT`[]DIRECT
 custom_proxy_group=🐟 漏网之鱼`select`[]🔰 节点选择`[]🎯 全球直连`[]♻️ 自动选择`.*
 ;设置分组标志位
 
+[node_pref]
+
 ; 在 Clash 配置文件中 proxies 的生成风格, 可选的值为 block、flow、compact，默认为 flow
 clash_proxies_style=block
