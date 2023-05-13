@@ -1,6 +1,4 @@
 ;设置规则标志位
-enable_rule_generator=false
-overwrite_original_rules=false
 ;设置规则标志位
 
 ;设置分组标志位
