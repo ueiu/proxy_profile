@@ -1,0 +1,46 @@
+# 参考: https://docs.cfw.lbyczf.com/contents/parser.html
+parsers: # array
+  - url: "https://example.com/profile.yaml" # 订阅链接地址
+    yaml:
+      prepend-rules: # 规则设置
+        - DOMAIN,translate.googleapis.com,🔰 节点选择
+        - DOMAIN-SUFFIX,openai.com,🇯🇵 日本节点
+        - DOMAIN,bard.google.com,🇺🇸 美国节点
+      prepend-proxy-groups: # 节点分组设置
+        - name: 🇯🇵 日本节点 # 建立日本策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+        - name: 🇭🇰 香港节点 # 建立香港策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+        - name: 🇺🇸 美国节点 # 建立美国策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+        - name: 🇨🇳 台湾节点 # 建立台湾策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+        - name: 🇸🇬 新加坡节点 # 建立新加坡策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+        - name: 🌏 其他节点 # 建立其他策略组
+          type: select
+          interval: 300
+          proxies:
+            - DIRECT
+      commands:
+        - proxy-groups.🇯🇵 日本节点.proxies=[]proxyNames|日本
+        - proxy-groups.🇭🇰 香港节点.proxies=[]proxyNames|香港|深港
+        - proxy-groups.🇺🇸 美国节点.proxies=[]proxyNames|美国
+        - proxy-groups.🇨🇳 台湾节点.proxies=[]proxyNames|台湾
+        - proxy-groups.🇸🇬 新加坡节点.proxies=[]proxyNames|新加坡
+        - proxy-groups.🌏 其他节点.proxies=[]proxyNames|^(?!.*(美国|日本|香港|深港|台湾|新加坡))
